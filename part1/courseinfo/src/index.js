@@ -38,7 +38,7 @@ const App = () => {
 
   return (
     <div>
-      <Header course={course}/>
+      <Header course={course} />
       <Content part1={part1} exercises1={exercises1} />
       <Content part2={part2} exercises2={exercises2} />
       <Content part3={part3} exercises3={exercises3} />
