@@ -14,15 +14,21 @@ const App = (props) => {
   const zeros = new Array(6).fill(0)
   const [points, setPoints] = useState(zeros)
   const copy = [...points]
+  const max = Math.max(...points)
+  const index = points.indexOf(max)
 
   copy[selected] += 1
  
   return (
     <div>
+      <h2>Anecdote of the day</h2>
       <p>{props.anecdotes[selected]}</p>
       <p>has {points[selected]} votes</p>
       <Vote handleClick={() => setPoints(copy)} text='vote' />
       <Button handleClick={() => setSelected(Math.floor(Math.random() * 6))} text='next anecdote' />
+      <h2>Anecdote with most votes</h2>
+      <p>{props.anecdotes[index]}</p>
+      <p>has {max} votes</p>
     </div>
   )
 }
