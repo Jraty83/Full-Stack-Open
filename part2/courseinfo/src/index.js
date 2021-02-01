@@ -8,17 +8,19 @@ const Header = (props) => {
 const Content = (props) => {
   return (
     <div>
-      <Part part={props.parts[0].name} ex={props.parts[0].exercises} />
-      <Part part={props.parts[1].name} ex={props.parts[1].exercises} />
-      <Part part={props.parts[2].name} ex={props.parts[2].exercises} />
-      <Part part={props.parts[3].name} ex={props.parts[3].exercises} />
+      <Part name={props.parts[0].name} ex={props.parts[0].exercises} />
+      <Part name={props.parts[1].name} ex={props.parts[1].exercises} />
+      <Part name={props.parts[2].name} ex={props.parts[2].exercises} />
+      <Part name={props.parts[3].name} ex={props.parts[3].exercises} />
     </div>
   )
 }
 
 const Total = (props) => {
+  const array1 = (props.parts).map(ex => ex.exercises)
+  const reducer = (accumulator, currentValue) => accumulator + currentValue
   return (
-    <h4>total of {props.parts[0].exercises + props.parts[1].exercises + props.parts[2].exercises + props.parts[3].exercises} exercises</h4>
+    <h4>total of {array1.reduce(reducer)} exercises</h4>
   )
 }
 
@@ -26,7 +28,7 @@ const Part = (props) => {
   return (
     <>
       <p>
-        {props.part} {props.ex}
+        {props.name} {props.ex}
       </p>
     </>
   )
