@@ -13,12 +13,21 @@ const App = () => {
       name: newName
     }
   
-    setPersons(persons.concat(personObject))
+    if (isDuplicate(persons))
+      window.alert(`${newName} is already added to phonebook`)
+    else
+      setPersons(persons.concat(personObject))
+  
     setNewName('')
   }
 
   const handlePersonChange = (event) => {
     setNewName(event.target.value)
+  }
+
+  const isDuplicate = () => {
+    const dup = (element) => element === newName
+    return (persons.map(e => e.name).some(dup))
   }
 
   return (
@@ -36,8 +45,10 @@ const App = () => {
         </div>
       </form>
       <h2>Numbers</h2>
+      <div>
         {persons.map(person =>
           <Numbers key={person.name} name={person.name} />)}
+      </div>
     </div>
   )
 }
