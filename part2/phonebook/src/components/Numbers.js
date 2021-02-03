@@ -1,9 +1,9 @@
 import React from 'react'
 
-const Numbers = ({ name }) => {
+const Numbers = ({ name,number }) => {
   return (
     <>
-      <p>{name}</p>
+      <p>{name} {number}</p>
     </>
   )
 }
